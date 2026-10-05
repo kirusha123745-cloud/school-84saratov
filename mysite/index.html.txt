@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МОУ «СОШ № 84» г. Саратова | Официальный портал</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-pink: #ec4899;
+            --accent-cyan: #06b6d4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Навигация */
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #334155;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Герой-секция с вайбом */
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at top, #1e1b4b 0%, var(--bg-dark) 70%);
+        }
+
+        .badge {
+            background: linear-gradient(90deg, var(--accent-pink), var(--primary));
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Секция Учителей */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .teacher-card {
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .teacher-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .teacher-role {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Законодательство (Официальные ссылки) */
+        .laws-section {
+            background: #111827;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid #1f2937;
+        }
+
+        .law-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .law-card {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .law-card:hover {
+            border-color: var(--accent-cyan);
+            background: #26334d;
+        }
+
+        .law-card i {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        /* Молодёжный Вайб-блок */
+        .vibe-box {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .vibe-box h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .vibe-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1rem;
+        }
+
+        .vibe-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Обратная связь */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #334155;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--bg-dark);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            color: #fff;
+            margin-bottom: 1rem;
+            outline: none;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: var(--primary-hover);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+}
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i> Школа №84 Саратов
+        </div>
+        <nav>
+            <a href="#teachers">Педколлектив</a>
+            <a href="#laws">Документы</a>
+            <a href="#vibe">Школьный Вайб</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <span class="badge">Учись • Развивайся • Создавай</span>
+        <h1>Пространство успеха и знаний</h1>
+        <p>Добро пожаловать на официальный портал МОУ «СОШ № 84» Заводского района г. Саратова.</p>
+    </section>
+
+    <div class="container">
+
+        <!-- Секция Учителей -->
+        <section id="teachers">
+            <h2 class="section-title"><i class="fa-solid fa-users" style="color: var(--accent-cyan);"></i> Педагогический состав</h2>
+            <div class="teachers-grid">
+                
+                <!-- Карта учителя -->
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🏫</div>
+                    <div class="teacher-name">Губанова Ольга Ивановна</div>
+                    <div class="teacher-role">Директор школы</div>
+                    <div class="teacher-meta">Высшая категория</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🏫</div>
+                    <div class="teacher-name">Иванова Елена Петровна</div>
+                    <div class="teacher-role">Зам. директора по УВР</div>
+                    <div class="teacher-meta">Учитель русского языка и лит-ры</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍🏫</div>
+                    <div class="teacher-name">Смирнов Алексей Сергеевич</div>
+                    <div class="teacher-role">Учитель математики</div>
+                    <div class="teacher-meta">Алгебра и геометрия</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🏫</div>
+                    <div class="teacher-name">Петрова Наталья Николаевна</div>
+                    <div class="teacher-role">Учитель начальных классов</div>
+                    <div class="teacher-meta">Классный руководитель 3 «А»</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍💻</div>
+                    <div class="teacher-name">Кузнецов Дмитрий Игоревич</div>
+                    <div class="teacher-role">Учитель информатики и ИКТ</div>
+                    <div class="teacher-meta">Руководитель IT-кружка</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🔬</div>
+                    <div class="teacher-name">Соколова Ирина Владимировна</div>
+                    <div class="teacher-role">Учитель химии и биологии</div>
+                    <div class="teacher-meta">Высшая категория</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">🇬🇧</div>
+                    <div class="teacher-name">Морозова Анна Михайловна</div>
+                    <div class="teacher-role">Учитель английского языка</div>
+                    <div class="teacher-meta">Педагогический стаж: 12 лет</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">🏃‍♂️</div>
+                    <div class="teacher-name">Волков Сергей Александрович</div>
+                    <div class="teacher-role">Учитель физической культуры</div>
+                    <div class="teacher-meta">Тренер секции ОФП</div>
+                </div>
+
+            </div>
+        </section>
+<!-- Официальное законодательство (Рабочие ссылки) -->
+        <section id="laws" class="laws-section">
+            <h2 class="section-title"><i class="fa-solid fa-scale-balanced" style="color: var(--accent-pink);"></i> Нормативно-правовая база</h2>
+            <div class="law-links">
+                
+                <a href="https://www.consultant.ru/document/cons_doc_LAW_140174/" target="_blank" class="law-card">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <div>
+                        <strong>ФЗ № 273 «Об образовании в РФ»</strong>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">Основной закон об образовании</p>
+                    </div>
+                </a>
+
+                <a href="https://edu.gov.ru/educational-programs/" target="_blank" class="law-card">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div>
+                        <strong>ФГОС (Стандарты)</strong>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">Минпросвещения России</p>
+                    </div>
+                </a>
+
+                <a href="https://saratov.gov.ru/" target="_blank" class="law-card">
+                    <i class="fa-solid fa-building-flag"></i>
+                    <div>
+                        <strong>Правительство Саратовской области</strong>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">Региональное законодательство</p>
+                    </div>
+                </a>
+
+                <a href="https://saratovmer.ru/" target="_blank" class="law-card">
+                    <i class="fa-solid fa-landmark"></i>
+                    <div>
+                        <strong>Администрация г. Саратова</strong>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">Комитет по образованию</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Молодёжная интерактивная секция -->
+        <section id="vibe" class="vibe-box">
+            <h2>⚡ Школьный Вайб и Мотиватор дня</h2>
+            <p>Нажми на кнопку, чтобы зарядиться позитивом перед уроками или контрольной!</p>
+            <button class="vibe-btn" onclick="generateQuote()">Получить мотивацию ✨</button>
+            <p id="quote-display" style="margin-top: 1.5rem; font-size: 1.2rem; font-weight: 700;"></p>
+        </section>
+
+        <!-- Обратная связь / Контакты -->
+        <section id="contact" class="contact-section">
+            <div>
+                <h2 style="margin-bottom: 1rem;"><i class="fa-solid fa-paper-plane" style="color: var(--primary);"></i> Свяжитесь с нами</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Есть вопросы по приёму, обучению или предложения? Напишите нам прямо сейчас!</p>
+                
+                <p><strong>📍 Адрес:</strong> г. Саратов, Южно-Зеленая ул., 11А</p>
+                <p><strong>📞 Телефон:</strong> +7 (8452) 92-15-44</p>
+                <p><strong>✉️ E-mail:</strong> saratowschool84@yandex.ru</p>
+            </div>
+
+            <form class="contact-form" onsubmit="submitForm(event)">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш Email или Телефон" required>
+                <textarea rows="4" placeholder="Введите ваше сообщение или вопрос..." required></textarea>
+                <button type="submit">Отправить сообщение</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 МОУ «СОШ № 84» г. Саратова. Все права защищены.</p>
+    </footer>
+
+    <!-- JS Скрипт для интерактива -->
+    <script>
+        // Генератор молодежных цитат
+        const quotes = [
+            "«Контрольная — это просто босс-файт, а ты прокачан на максимум! 🚀»",
+            "«Ошибка — это не фиаско, это опыт в копилку (XP +50).»",
+"«Учи правила, чтобы взламывать сложные задачи как про-геймер! 💻»",
+            "«Сегодня отличный день, чтобы получить пару пятерок и кайфовать! 🔥»",
+            "«Ты способны на большее, чем думаешь. Главное — начальный старт! ✨»"
+        ];
+
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote-display').innerText = quotes[randomIndex];
+        }
+
+        // Обработка формы
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Спасибо! Ваше сообщение отправлено администрации школы № 84.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
